@@ -99,3 +99,36 @@ WHERE faculty_id = 3;
 SELECT *
 FROM Faculty
 WHERE faculty_id = 2;
+-- ============================================
+-- Member D - Courses
+-- ============================================
+
+CREATE TABLE Courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100),
+    credits INT,
+    faculty_id INT,
+    classroom_id INT,
+    FOREIGN KEY (faculty_id) REFERENCES Faculty(faculty_id),
+    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
+);
+
+INSERT INTO Courses (course_name, credits, faculty_id, classroom_id)
+VALUES
+('Introduction to Programming', 3, 1, 1),
+('Calculus I', 4, 2, 2),
+('World History', 3, 1, 3),
+('Database Systems', 3, 2, 1),
+('English Composition', 3, 1, 2),
+('Physics I', 4, 2, 3);
+
+UPDATE Courses
+SET credits = 4
+WHERE course_name = 'World History';
+
+DELETE FROM Courses
+WHERE course_name = 'Physics I';
+
+SELECT *
+FROM Courses
+WHERE credits >= 4;
