@@ -167,6 +167,46 @@ WHERE category = 'Sports';
 
 
 -- =========================================
+-- Member E - Student_Courses (junction table)
+-- =========================================
+CREATE TABLE Student_Courses (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
+
+INSERT INTO Student_Courses
+VALUES
+(1,1),
+(1,2),
+(2,1),
+(3,3),
+(4,4);
+
+-- =========================================
+-- Member E - Student_Activities (junction table)
+-- =========================================
+CREATE TABLE Student_Activities (
+    student_id INT,
+    activity_id INT,
+    PRIMARY KEY (student_id, activity_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (activity_id) REFERENCES Extra_Curricular_Activities(activity_id)
+);
+
+INSERT INTO Student_Activities
+VALUES
+(1,1),
+(1,3),
+(2,2),
+(3,4),
+(4,1);
+
+
+
+-- =========================================
 -- GROUP TASK 1: Relationships check
 -- Confirms every foreign key points to a valid
 -- primary key in another table. Each query should
@@ -243,3 +283,25 @@ FROM Students s
 JOIN Student_Activities sa ON s.student_id = sa.student_id
 JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
 JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id;
+
+
+-- Last join query: student, classroom/building, and enrolled course together
+SELECT
+    s.name AS Student,
+    cl.building,
+    cl.room_number,
+    c.course_name AS Course
+FROM Students s
+JOIN Classroom cl ON s.classroom_id = cl.classroom_id
+JOIN Student_Courses sc ON s.student_id = sc.student_id
+JOIN Courses c ON sc.course_id = c.course_id;
+
+-- =========================================
+-- GROUP TASK 4: Aggregate query
+-- =========================================
+SELECT
+    c.course_name,
+    COUNT(sc.student_id) AS Number_of_Students
+FROM Courses c
+LEFT JOIN Student_Courses sc ON c.course_id = sc.course_id
+GROUP BY c.course_name;
