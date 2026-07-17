@@ -23,11 +23,11 @@ CREATE TABLE Students (
 );
 
 INSERT INTO Students (name, email, classroom_id, enrollment_date) VALUES
-('A. Umugwanez', 'a.umugwanez@alustudent.com', 1, '2026-01-15'),
-('M. Isaac',      'm.isaac@alustudent.com',     1, '2026-01-15'),
-('J. Mushumba',   'j.mushumba@alustudent.com',  2, '2026-01-16'),
-('I. Gatete',     'i.gatete@alustudent.com',    2, '2026-01-16'),
-('Zakhio',        'zakhio2007@gmail.com',       3, '2026-01-17');
+('Alice Uwase',    'alice.uwase@gmail.com',    1, '2026-01-15'),
+('Brian Mugisha',  'brian.mugisha@gmail.com',  1, '2026-01-15'),
+('Chantal Ingabire','chantal.ingabire@gmail.com', 2, '2026-01-16'),
+('David Niyonzima','david.niyonzima@gmail.com',2, '2026-01-16'),
+('Esther Umutoni', 'esther.umutoni@gmail.com', 3, '2026-01-17');
 
 -- Required individual queries
 UPDATE Students SET email = 'a.umugwanez.new@alustudent.com' WHERE student_id = 1;
@@ -35,3 +35,6 @@ UPDATE Students SET email = 'a.umugwanez.new@alustudent.com' WHERE student_id = 
 DELETE FROM Students WHERE student_id = 5;
 
 SELECT * FROM Students WHERE classroom_id = 1;
+CREATE DATABASE IF NOT EXISTS alu_school_db;
+
+USE alu_school_db;
