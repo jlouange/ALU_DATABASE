@@ -164,3 +164,82 @@ WHERE activity_id = 5;
 SELECT *
 FROM Extra_Curricular_Activities
 WHERE category = 'Sports';
+
+
+-- =========================================
+-- GROUP TASK 1: Relationships check
+-- Confirms every foreign key points to a valid
+-- primary key in another table. Each query should
+-- return zero rows if the data is clean.
+-- =========================================
+SELECT s.student_id, s.classroom_id
+FROM Students s
+LEFT JOIN Classroom c ON s.classroom_id = c.classroom_id
+WHERE c.classroom_id IS NULL;
+
+SELECT co.course_id, co.faculty_id
+FROM Courses co
+LEFT JOIN Faculty f ON co.faculty_id = f.faculty_id
+WHERE f.faculty_id IS NULL;
+
+SELECT co.course_id, co.classroom_id
+FROM Courses co
+LEFT JOIN Classroom c ON co.classroom_id = c.classroom_id
+WHERE c.classroom_id IS NULL;
+
+SELECT a.activity_id, a.faculty_advisor_id
+FROM Extra_Curricular_Activities a
+LEFT JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id
+WHERE f.faculty_id IS NULL;
+
+SELECT sc.student_id, sc.course_id
+FROM Student_Courses sc
+LEFT JOIN Students s ON sc.student_id = s.student_id
+LEFT JOIN Courses c ON sc.course_id = c.course_id
+WHERE s.student_id IS NULL OR c.course_id IS NULL;
+
+SELECT sa.student_id, sa.activity_id
+FROM Student_Activities sa
+LEFT JOIN Students s ON sa.student_id = s.student_id
+LEFT JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
+WHERE s.student_id IS NULL OR a.activity_id IS NULL;
+
+/*
+GROUP TASK 2: Normalization check
+No table repeats data that belongs elsewhere. Students, Courses, and
+Extra_Curricular_Activities reference Classroom and Faculty by ID rather
+than duplicating room or professor details inline, so a change to a
+classroom or faculty member only needs to happen in one place. The
+many-to-many relationships between students and courses, and between
+students and activities, are handled through Student_Courses and
+Student_Activities junction tables, each using a composite primary key
+of the two foreign keys, rather than repeating full student records
+once per enrollment or flattening the relationship into repeating
+columns on the Students table.
+*/
+
+-- =========================================
+-- GROUP TASK 3: Join queries
+-- =========================================
+
+-- "Student X is enrolled in Course Y, taught by Faculty Z, in Classroom W"
+SELECT
+    s.name AS Student,
+    c.course_name AS Course,
+    f.name AS Faculty,
+    cl.room_number AS Classroom
+FROM Students s
+JOIN Student_Courses sc ON s.student_id = sc.student_id
+JOIN Courses c ON sc.course_id = c.course_id
+JOIN Faculty f ON c.faculty_id = f.faculty_id
+JOIN Classroom cl ON c.classroom_id = cl.classroom_id;
+
+-- "Student X participates in Activity Y, advised by Faculty Z"
+SELECT
+    s.name AS Student,
+    a.activity_name AS Activity,
+    f.name AS Faculty_Advisor
+FROM Students s
+JOIN Student_Activities sa ON s.student_id = sa.student_id
+JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
+JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id;
