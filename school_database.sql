@@ -133,6 +133,38 @@ SELECT *
 FROM Courses
 WHERE credits >= 4;
 
+-- ============================================
+-- Member E - Extra_Curricular_Activities
+-- ============================================
+
+CREATE TABLE Extra_Curricular_Activities (
+    activity_id INT PRIMARY KEY AUTO_INCREMENT,
+    activity_name VARCHAR(100),
+    category VARCHAR(50),
+    faculty_advisor_id INT,
+    FOREIGN KEY (faculty_advisor_id) REFERENCES Faculty(faculty_id)
+);
+
+INSERT INTO Extra_Curricular_Activities
+(activity_name, category, faculty_advisor_id)
+VALUES
+('Football Club', 'Sports', 1),
+('Drama Club', 'Arts', 2),
+('Coding Club', 'Technology', 4),
+('Debate Club', 'Academic', 2),
+('Health Awareness Club', 'Health', 5);
+
+UPDATE Extra_Curricular_Activities
+SET category = 'STEM'
+WHERE activity_name = 'Coding Club';
+
+DELETE FROM Extra_Curricular_Activities
+WHERE activity_id = 5;
+
+SELECT *
+FROM Extra_Curricular_Activities
+WHERE category = 'Sports';
+
 
 -- =========================================
 -- GROUP TASK 1: Relationships check
@@ -211,4 +243,3 @@ FROM Students s
 JOIN Student_Activities sa ON s.student_id = sa.student_id
 JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
 JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id;
-
