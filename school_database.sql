@@ -137,11 +137,11 @@ WHERE credits >= 4;
 -- Member E - Extra_Curricular_Activities
 -- ============================================
 
-CREATE TABLE Extra_Curricular_Activities(
-    activity_id INT PRIMARY KEY AUTO_INCREMENT;
-    activity_name VARCHAR(100);
-    category VARCHAR(50);
-    faculty_advisor_id INT;
+CREATE TABLE Extra_Curricular_Activities (
+    activity_id INT PRIMARY KEY AUTO_INCREMENT,
+    activity_name VARCHAR(100),
+    category VARCHAR(50),
+    faculty_advisor_id INT,
     FOREIGN KEY (faculty_advisor_id) REFERENCES Faculty(faculty_id)
 );
 
