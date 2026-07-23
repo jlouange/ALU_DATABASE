@@ -1,4 +1,4 @@
-# ALU Database — Play with SQL Basics (Peer Group Engagement Activity)
+# ALU Database: Play with SQL Basics (Peer Group Engagement Activity)
 
 ## Overview
 A relational database for a school system built in MySQL, covering five entities: **Students, Classroom, Faculty, Courses,** and **Extra_Curricular_Activities**, connected through two junction tables (`Student_Courses`, `Student_Activities`) to handle the many-to-many relationships between students and courses, and students and activities.
@@ -37,10 +37,10 @@ Tables are created in dependency order, since foreign keys require the reference
 2. All 5 `CREATE TABLE` statements, in dependency order, with PK/FK constraints
 3. All `INSERT` statements (minimum 5 rows per table)
 4. Individual `UPDATE` / `DELETE` / `SELECT` statements, labeled by member
-5. Group Task 1 — Relationship checks: `LEFT JOIN ... WHERE ... IS NULL` queries confirming no orphaned foreign keys across every relationship
-6. Group Task 2 — Normalization check (written as a comment block)
-7. Group Task 3 — Three `JOIN` queries pulling data across multiple tables
-8. Group Task 4 — Aggregate query (`COUNT` + `GROUP BY`) showing students enrolled per course
+5. Group Task 1: Relationship checks: `LEFT JOIN ... WHERE ... IS NULL` queries confirming no orphaned foreign keys across every relationship
+6. Group Task 2: Normalization check (written as a comment block)
+7. Group Task 3: Three `JOIN` queries pulling data across multiple tables
+8. Group Task 4: Aggregate query (`COUNT` + `GROUP BY`) showing students enrolled per course
 
 ## Notes
 - Deletes were checked to be foreign-key safe: no row is removed while another table still references it.
