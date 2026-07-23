@@ -99,6 +99,11 @@ WHERE faculty_id = 3;
 SELECT *
 FROM Faculty
 WHERE faculty_id = 2;
+-- Member C - additional verification query
+SELECT faculty_id, name, department
+FROM Faculty
+WHERE department IN ('Computer Science', 'Health');
+
 -- ============================================
 -- Member D - Courses
 -- ============================================
