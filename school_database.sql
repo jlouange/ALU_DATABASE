@@ -99,6 +99,7 @@ WHERE faculty_id = 3;
 SELECT *
 FROM Faculty
 WHERE faculty_id = 2;
+
 -- ============================================
 -- Member D - Courses
 -- ============================================
