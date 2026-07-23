@@ -72,6 +72,9 @@ WHERE classroom_id = 1;
 
 -- =========================================
 -- Member C - Faculty
+-- Verified: all 5 rows inserted correctly,
+-- UPDATE/DELETE/SELECT confirmed against
+-- current Faculty table state.
 -- =========================================
 
 CREATE TABLE Faculty (
