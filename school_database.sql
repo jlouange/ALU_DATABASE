@@ -33,7 +33,20 @@ INSERT INTO Classroom (room_number, building, capacity)
 VALUES
 ('101', 'Building A', 30),
 ('102', 'Building A', 25),
-('201', 'Building B', 40);
+('201', 'Building B', 40),
+('202', 'Building B', 35),
+('301', 'Building C', 20);
+
+UPDATE Classroom 
+SET capacity = 32
+WHERE room_number = '101';
+
+DELETE FROM Classroom
+WHERE room_number = '301';
+
+SELECT *
+FROM Classroom
+WHERE building = 'Building A';
 
 -- =========================================
 -- Member A - Students
