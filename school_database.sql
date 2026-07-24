@@ -37,12 +37,18 @@ VALUES
 ('202', 'Building B', 35),
 ('301', 'Building C', 20);
 
+-- Member B - UPDATE
+
 UPDATE Classroom 
 SET capacity = 32
 WHERE room_number = '101';
 
+-- Member B - DELETE
+
 DELETE FROM Classroom
 WHERE room_number = '301';
+
+-- Member B - SELECT
 
 SELECT *
 FROM Classroom
