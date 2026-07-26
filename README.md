@@ -16,7 +16,7 @@ mysql -u root -p < school_database.sql
 | Name | GitHub Handle | Table / Section Owned |
 |---|---|---|
 | Jean Louange Mushumba| jlouange | Classroom table (Member B) |
-| Gatete Irene Hodali | Hodali / Gatete Irene | Students table (Member A) |
+| Gatete Irene Hodali | Hodali-1 / Gatete Irene | Students table (Member A) |
 | Musaedi Mbogo Isaac | Isa1ac309 | Faculty table (Member C), Verification support |
 | Favour Ndelle Kebei | fave058 | Courses  table (Member D) |
 | David Lael Nziza | davidlael | Extra_Curricular_Activities (Member E) |
